@@ -7,15 +7,25 @@ namespace FoldersSync
     {
         static void Main(string[] args)
         {
+            // Check if the correct number of arguments were passed
+            if (args.Length != 4)
+            {
+                Console.WriteLine("Usage: FolderSync.exe [sourceFolder] [destFolder] [syncInterval] [logFilePath]");
+                return;
+            }
             // Set the source and destination folders to sync
-            string sourceFolder = @"C:\Users\be_ha\Desktop\folder1"; // =args[0] to execute from outside
-            string destFolder = @"C:\Users\be_ha\Desktop\folder3"; // =args[1] to execute from outside
-
+            // string sourceFolder = @"C:\Users\be_ha\Desktop\folder1"; // =args[0] to execute from outside
+            // string destFolder = @"C:\Users\be_ha\Desktop\folder3"; // =args[1] to execute from outside
+            string sourceFolder = args[0];
+            string destFolder = args[1];
             // Set the interval for periodic syncing (in minutes)
-            int syncInterval = 1; // args[2]
-
+            //int syncInterval = 1; // args[2]
+            int syncInterval = int.Parse(args[2]);
             // Set the log file path and create a StreamWriter object
-            string logFilePath = @"C:\Users\be_ha\Desktop\log.txt"; // args[3]
+            // string logFilePath = @"C:\Users\be_ha\Desktop\log.txt"; // args[3]
+
+            
+            string logFilePath = args[3];
             StreamWriter logFile = new StreamWriter(logFilePath, true);
 
             // Write the initial sync time to the log file
